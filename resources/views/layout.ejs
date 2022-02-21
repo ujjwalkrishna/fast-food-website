@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durga Fast Food</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light container mx-auto flex items-center justify-between py-4">
+        <a class="navbar-brand" href="/">
+            <img src="/img/2.png" style="height: 50px;" class="logo-image" alt="durga fast food logo">
+        </a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav1"
+            aria-controls="basicExampleNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="basicExampleNav1">
+
+            <!-- Right -->
+            <ul class="flex items-center navbar-nav ml-auto">
+                <li class="ml-6 nav-item"><a href="/" class="nav-link waves-effect">Menu</a></li>
+                <% if(user) { %>
+                    <% if(user.role==="customer" ){ %>
+                        <li class="ml-6" nav-item><a href="/customer/orders" class="nav-link waves-effect">Orders</a>
+                        </li>
+                        <% } else { %>
+                            <li class="ml-6" nav-item><a href="/admin/orders" class="nav-link waves-effect">Orders</a>
+                            </li>
+                            <% } %>
+                                <li class="ml-6" nav-item>
+                                    <form id="logout" action="/logout" method="POST">
+                                        <a onclick="document.getElementById('logout').submit()" href="#"
+                                            class="nav-link waves-effect">Logout</a>
+                                    </form>
+                                </li>
+                                <% } else { %>
+                                    <li class="ml-6"><a href="/register" class="nav-link waves-effect">Register</a></li>
+                                    <li class="ml-6"><a href="/login" class="nav-link waves-effect">Login</a></li>
+                                    <% } %>
+                                        <li class="ml-6" nav-item><a href="/cart"
+                                                class="nav-link waves-effect inline-block px-4 py-2 rounded-full flex items-center">
+                                                <span id="cartCounter" class="text-white font-bold pr-2">
+                                                    <%= session.cart ? session.cart.totalQty : '' %>
+                                                </span>
+                                                <img src="/img/cart.png" alt="">
+                                            </a></li>
+            </ul>
+        </div>
+    </nav>
+    <%- body %>
+
+    <!-- Footer -->
+   <footer class="page-footer font-small mdb-color pt-4" style="background-color: #F8F8F8;">
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center pb-2">© 2021 Copyright :
+      <a href="https://www.durgafastfood.heroku.com"><b>Durga Fast Food</b></a>
+    </div>
+    <div class="footer-copyright text-center pb-4 pt-2">
+        Designed with &#128151 by <b>Krishna Ujjwal</b>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="/js/app.js"></script>
+
+</body>
+
+</html>

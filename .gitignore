@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+.env
+durgafastfood.pem
+durgafastfood.ppk
+x.json
+ubuntu_dbpass.txt
