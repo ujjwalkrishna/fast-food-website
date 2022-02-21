@@ -7,7 +7,7 @@
 
 ---
 
-<p align="center">Online Fast food ordering website where customer can buy fast food.</p>
+<p align="center">Online Fast food ordering website where customer can order fast food online.</p>
 
 # Table of Contents
 + [Features](#description)
